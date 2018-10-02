@@ -1,7 +1,7 @@
 const express  = require('express');
 const hbs  = require('hbs');
 const app = express();
-
+const port = process.env.PORT || 3030;
 app.use(express.static(__dirname +'/public'));
 app.use((req,res,next)=>{
     const now = new Date().toString();
@@ -15,9 +15,9 @@ hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('currentYear',()=>{
     return new Date().getFullYear()
 })
-app.use((req,res,next)=>{
-    res.render('maintenance.hbs');
-});
+// app.use((req,res,next)=>{
+//     res.render('maintenance.hbs');
+// });
 
 app.get('/',(req,res)=>{
     res.render('home.hbs',{
@@ -32,6 +32,6 @@ app.get('/about',(req,res)=>{
         year:new Date().getFullYear()
     });
 });
-app.listen('3030',()=>{
-    console.log('Listening to port 3030');
+app.listen(port,()=>{
+    console.log(`Listening to port ${port}`);
 });
