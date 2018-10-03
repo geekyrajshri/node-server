@@ -32,6 +32,11 @@ app.get('/about',(req,res)=>{
         year:new Date().getFullYear()
     });
 });
+app.get('/project',(req,res)=>{
+    res.render('project.hbs',{
+        title: 'My Projects',
+    });
+});
 app.listen(port,()=>{
     console.log(`Listening to port ${port}`);
 });
